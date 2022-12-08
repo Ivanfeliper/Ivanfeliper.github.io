@@ -117,10 +117,21 @@
                <img class="w-[400px] h-[400px] pt-2 pb-12 px-10" src="src/img/Contact.jpg" alt="Network Plus Certification Image"/>
             </div>
 
-            <div class="max-w-[25em] max-h-[25em] overflow-hidden flex flex-col justify-start px-2 gap-8">
-               <form class="w-[432px] h-[60px]">
-                  <input type="text" id="email" name="email" placeholder="Email address" class="flex flex-grow items-center p-4 text-gray-400 bg-white border">
+            <div class="max-w-[25em] max-h-[25em] overflow-hidden flex flex-col items-start px-4 gap-8 flex-grow-0">
+               <form>
+                  <input type="text" id="email" name="email" placeholder="Email address" class="w-[432px] h-[60px] flex flex-row items-center p-4 text-gray-400
+                   bg-white border shadow-sm rounded flex-grow-0">
                </form>
+
+               <form>
+                  <input type="text" id="message" name="message" placeholder="Message" class="w-[432px] h-[128px] flex flex-row items-start p-4 text-gray-400
+                   bg-white border shadow-sm rounded flex-grow-0">
+               </form>
+
+               <div class="w-[432px] h-[56px] flex flex-col justify-center items-center bg-sky-600 rounded flex-grow-0">
+                  <button>Send</button>
+               </div>
+
             </div>
 
          </div>
