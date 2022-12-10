@@ -566,6 +566,14 @@ video {
   height: 56px;
 }
 
+.h-\[308px\] {
+  height: 308px;
+}
+
+.h-\[24px\] {
+  height: 24px;
+}
+
 .max-h-\[25em\] {
   max-height: 25em;
 }
@@ -594,6 +602,18 @@ video {
   width: 25em;
 }
 
+.w-\[464px\] {
+  width: 464px;
+}
+
+.w-\[37px\] {
+  width: 37px;
+}
+
+.w-\[101px\] {
+  width: 101px;
+}
+
 .max-w-7xl {
   max-width: 80rem;
 }
@@ -604,10 +624,6 @@ video {
 
 .max-w-\[24em\] {
   max-width: 24em;
-}
-
-.flex-grow {
-  flex-grow: 1;
 }
 
 .flex-grow-0 {
@@ -630,12 +646,12 @@ video {
   align-items: center;
 }
 
-.justify-start {
-  justify-content: flex-start;
-}
-
 .justify-center {
   justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
 }
 
 .gap-8 {
@@ -648,6 +664,14 @@ video {
 
 .gap-12 {
   gap: 3rem;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.gap-2 {
+  gap: 0.5rem;
 }
 
 .gap-y-2 {
@@ -711,6 +735,16 @@ video {
   background-color: rgb(2 132 199 / var(--tw-bg-opacity));
 }
 
+.bg-red-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 226 226 / var(--tw-bg-opacity));
+}
+
+.bg-red-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
+}
+
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
@@ -722,6 +756,10 @@ video {
 
 .p-4 {
   padding: 1rem;
+}
+
+.p-2 {
+  padding: 0.5rem;
 }
 
 .py-6 {
@@ -779,6 +817,21 @@ video {
   padding-right: 2.5rem;
 }
 
+.py-0 {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.py-11 {
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
+}
+
 .pt-8 {
   padding-top: 2rem;
 }
@@ -805,6 +858,22 @@ video {
 
 .pb-12 {
   padding-bottom: 3rem;
+}
+
+.pl-6 {
+  padding-left: 1.5rem;
+}
+
+.pb-6 {
+  padding-bottom: 1.5rem;
+}
+
+.pr-6 {
+  padding-right: 1.5rem;
+}
+
+.pl-4 {
+  padding-left: 1rem;
 }
 
 .text-center {
@@ -941,12 +1010,20 @@ video {
     width: auto;
   }
 
+  .lg\:flex-grow {
+    flex-grow: 1;
+  }
+
   .lg\:flex-row {
     flex-direction: row;
   }
 
   .lg\:flex-row-reverse {
     flex-direction: row-reverse;
+  }
+
+  .lg\:flex-col {
+    flex-direction: column;
   }
 
   .lg\:items-start {
@@ -957,8 +1034,25 @@ video {
     align-items: center;
   }
 
+  .lg\:justify-center {
+    justify-content: center;
+  }
+
   .lg\:justify-between {
     justify-content: space-between;
+  }
+
+  .lg\:justify-around {
+    justify-content: space-around;
+  }
+
+  .lg\:justify-items-start {
+    justify-items: start;
+  }
+
+  .lg\:gap-x-6 {
+    -moz-column-gap: 1.5rem;
+         column-gap: 1.5rem;
   }
 
   .lg\:space-y-0 > :not([hidden]) ~ :not([hidden]) {
