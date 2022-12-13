@@ -566,6 +566,14 @@ video {
   height: 100px;
 }
 
+.h-\[276px\] {
+  height: 276px;
+}
+
+.h-\[\] {
+  height: ;
+}
+
 .max-h-\[25em\] {
   max-height: 25em;
 }
