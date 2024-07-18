@@ -88,7 +88,7 @@ function checkAnswer8(selectedAnswer) {
 }
 
 function checkAnswer9(selectedAnswer) {
-    const correctAnswer = "Amazon Machine Images. Amazon templates machine image that contains the configuration for applications."; // Set the correct answer here
+    const correctAnswer = "Public, VPN only, Private."; // Set the correct answer here
     const userAnswer = selectedAnswer.textContent;
 
     if (userAnswer === correctAnswer) {
@@ -99,7 +99,7 @@ function checkAnswer9(selectedAnswer) {
 }
 
 function checkAnswer10(selectedAnswer) {
-    const correctAnswer = "Amazon Machine Images. Amazon templates machine image that contains the configuration for applications."; // Set the correct answer here
+    const correctAnswer = "Way to connect to AWS services without the need to have a public IP or default gateway."; // Set the correct answer here
     const userAnswer = selectedAnswer.textContent;
 
     if (userAnswer === correctAnswer) {
@@ -110,7 +110,7 @@ function checkAnswer10(selectedAnswer) {
 }
 
 function checkAnswer11(selectedAnswer) {
-    const correctAnswer = "Amazon Machine Images. Amazon templates machine image that contains the configuration for applications."; // Set the correct answer here
+    const correctAnswer = "5"; // Set the correct answer here
     const userAnswer = selectedAnswer.textContent;
 
     if (userAnswer === correctAnswer) {
@@ -121,7 +121,7 @@ function checkAnswer11(selectedAnswer) {
 }
 
 function checkAnswer12(selectedAnswer) {
-    const correctAnswer = "Amazon Machine Images. Amazon templates machine image that contains the configuration for applications."; // Set the correct answer here
+    const correctAnswer = "12 Months free, Always free, free trials."; // Set the correct answer here
     const userAnswer = selectedAnswer.textContent;
 
     if (userAnswer === correctAnswer) {
@@ -132,7 +132,7 @@ function checkAnswer12(selectedAnswer) {
 }
 
 function checkAnswer13(selectedAnswer) {
-    const correctAnswer = "Amazon Machine Images. Amazon templates machine image that contains the configuration for applications."; // Set the correct answer here
+    const correctAnswer = "Pay as you go, Save when you Reserve, Pay less when you use More."; // Set the correct answer here
     const userAnswer = selectedAnswer.textContent;
 
     if (userAnswer === correctAnswer) {
@@ -143,7 +143,7 @@ function checkAnswer13(selectedAnswer) {
 }
 
 function checkAnswer14(selectedAnswer) {
-    const correctAnswer = "Amazon Machine Images. Amazon templates machine image that contains the configuration for applications."; // Set the correct answer here
+    const correctAnswer = "Pricing Calculator."; // Set the correct answer here
     const userAnswer = selectedAnswer.textContent;
 
     if (userAnswer === correctAnswer) {
@@ -154,7 +154,7 @@ function checkAnswer14(selectedAnswer) {
 }
 
 function checkAnswer15(selectedAnswer) {
-    const correctAnswer = "Amazon Machine Images. Amazon templates machine image that contains the configuration for applications."; // Set the correct answer here
+    const correctAnswer = "Cost explorer."; // Set the correct answer here
     const userAnswer = selectedAnswer.textContent;
 
     if (userAnswer === correctAnswer) {
@@ -165,7 +165,7 @@ function checkAnswer15(selectedAnswer) {
 }
 
 function checkAnswer16(selectedAnswer) {
-    const correctAnswer = "Amazon Machine Images. Amazon templates machine image that contains the configuration for applications."; // Set the correct answer here
+    const correctAnswer = "Availability Zones."; // Set the correct answer here
     const userAnswer = selectedAnswer.textContent;
 
     if (userAnswer === correctAnswer) {
@@ -176,7 +176,7 @@ function checkAnswer16(selectedAnswer) {
 }
 
 function checkAnswer17(selectedAnswer) {
-    const correctAnswer = "Amazon Machine Images. Amazon templates machine image that contains the configuration for applications."; // Set the correct answer here
+    const correctAnswer = "AWS System Manager."; // Set the correct answer here
     const userAnswer = selectedAnswer.textContent;
 
     if (userAnswer === correctAnswer) {
@@ -198,7 +198,7 @@ function checkAnswer18(selectedAnswer) {
 }
 
 function checkAnswer19(selectedAnswer) {
-    const correctAnswer = "Amazon Machine Images. Amazon templates machine image that contains the configuration for applications."; // Set the correct answer here
+    const correctAnswer = "AWS WAF."; // Set the correct answer here
     const userAnswer = selectedAnswer.textContent;
 
     if (userAnswer === correctAnswer) {
@@ -209,7 +209,7 @@ function checkAnswer19(selectedAnswer) {
 }
 
 function checkAnswer20(selectedAnswer) {
-    const correctAnswer = "Amazon Machine Images. Amazon templates machine image that contains the configuration for applications."; // Set the correct answer here
+    const correctAnswer = "AWS Shield."; // Set the correct answer here
     const userAnswer = selectedAnswer.textContent;
 
     if (userAnswer === correctAnswer) {
@@ -220,7 +220,7 @@ function checkAnswer20(selectedAnswer) {
 }
 
 function checkAnswer21(selectedAnswer) {
-    const correctAnswer = "Amazon Machine Images. Amazon templates machine image that contains the configuration for applications."; // Set the correct answer here
+    const correctAnswer = "Amazon Interceptor"; // Set the correct answer here
     const userAnswer = selectedAnswer.textContent;
 
     if (userAnswer === correctAnswer) {
@@ -231,7 +231,7 @@ function checkAnswer21(selectedAnswer) {
 }
 
 function checkAnswer22(selectedAnswer) {
-    const correctAnswer = "Amazon Machine Images. Amazon templates machine image that contains the configuration for applications."; // Set the correct answer here
+    const correctAnswer = "AWS trusted advisor"; // Set the correct answer here
     const userAnswer = selectedAnswer.textContent;
 
     if (userAnswer === correctAnswer) {
@@ -242,7 +242,7 @@ function checkAnswer22(selectedAnswer) {
 }
 
 function checkAnswer23(selectedAnswer) {
-    const correctAnswer = "Amazon Machine Images. Amazon templates machine image that contains the configuration for applications."; // Set the correct answer here
+    const correctAnswer = "AWS GuardDuty"; // Set the correct answer here
     const userAnswer = selectedAnswer.textContent;
 
     if (userAnswer === correctAnswer) {
@@ -264,7 +264,7 @@ function checkAnswer6(selectedAnswer) {
 }
 
 function checkAnswer24(selectedAnswer) {
-    const correctAnswer = "Amazon Machine Images. Amazon templates machine image that contains the configuration for applications."; // Set the correct answer here
+    const correctAnswer = "AWS WAF"; // Set the correct answer here
     const userAnswer = selectedAnswer.textContent;
 
     if (userAnswer === correctAnswer) {
@@ -275,7 +275,7 @@ function checkAnswer24(selectedAnswer) {
 }
 
 function checkAnswer25(selectedAnswer) {
-    const correctAnswer = "Amazo"; // Set the correct answer here
+    const correctAnswer = "Application, Network, and Gateway Load Balancer."; // Set the correct answer here
     const userAnswer = selectedAnswer.textContent;
 
     if (userAnswer === correctAnswer) {
@@ -286,7 +286,7 @@ function checkAnswer25(selectedAnswer) {
 }
 
 function checkAnswer26(selectedAnswer) {
-    const correctAnswer = "Amazon Machine Images. ."; // Set the correct answer here
+    const correctAnswer = "Application load balancer."; // Set the correct answer here
     const userAnswer = selectedAnswer.textContent;
 
     if (userAnswer === correctAnswer) {
@@ -297,7 +297,7 @@ function checkAnswer26(selectedAnswer) {
 }
 
 function checkAnswer27(selectedAnswer) {
-    const correctAnswer = "Amazages. ."; // Set the correct answer here
+    const correctAnswer = "Network Load balancer."; // Set the correct answer here
     const userAnswer = selectedAnswer.textContent;
 
     if (userAnswer === correctAnswer) {
@@ -308,7 +308,7 @@ function checkAnswer27(selectedAnswer) {
 }
 
 function checkAnswer28(selectedAnswer) {
-    const correctAnswer = "Amazon Machine  ."; // Set the correct answer here
+    const correctAnswer = "Gateway load balancer."; // Set the correct answer here
     const userAnswer = selectedAnswer.textContent;
 
     if (userAnswer === correctAnswer) {
@@ -319,7 +319,7 @@ function checkAnswer28(selectedAnswer) {
 }
 
 function checkAnswer29(selectedAnswer) {
-    const correctAnswer = "Amazon M."; // Set the correct answer here
+    const correctAnswer = "JSON"; // Set the correct answer here
     const userAnswer = selectedAnswer.textContent;
 
     if (userAnswer === correctAnswer) {
@@ -330,7 +330,7 @@ function checkAnswer29(selectedAnswer) {
 }
 
 function checkAnswer30(selectedAnswer) {
-    const correctAnswer = "Amazon Mes. ."; // Set the correct answer here
+    const correctAnswer = "CDN"; // Set the correct answer here
     const userAnswer = selectedAnswer.textContent;
 
     if (userAnswer === correctAnswer) {
