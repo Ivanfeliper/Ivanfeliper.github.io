@@ -1,158 +1,79 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,500;1,600&family=Roboto:wght@500&display=swap" rel="stylesheet">
-  <style type="text/tailwindcss"></style>
-  <link href="/dist/output.css" rel="stylesheet">
-  <script> </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <script src="Script2.js"></script> <!-- Link to your JavaScript file -->
+    <title>Flashcards Game</title>
 </head>
+<body>
+    <div class="flashcard">
+        <p class="question">Elasticity is a ASW service that monitors apps to auto modify capacity to stabilize and predict performance?</p>
+        <ul class="answers">
+            <li class="answer" onclick="checkAnswer(this)">True</li>
+            <li class="answer" onclick="checkAnswer(this)">Flase</li>
+        </ul>
+    </div>
 
-<body >
-    <div>
-        <header class="flex flex-col">
-         <nav class="flex flex-row justify-center items-center py-4 px-12 gap-4 flex-grow-0"> 
-            <a href="#skills" class="text-2xl font-medium text-gray-500 border-b-2 border-transparent hover:text-gray-900 focus:outline-none focus:border-gray-500">Skills</a>
-            <a href="#projects" class="text-2xl font-medium text-gray-500 border-b-2 border-transparent hover:text-gray-900 focus:outline-none focus:border-gray-500">Projects</a>
-            <a href="#contact" class="text-2xl font-medium text-gray-500 border-b-2 border-transparent hover:text-gray-900 focus:outline-none focus:border-gray-500">Contact</a>
-         </nav>
+    <div class="flashcard">
+        <p class="question">Every AWS has at least 3 availability zones. </p>
+        <ul class="answers">
+            <li class="answer" onclick="checkAnswer(this)">True</li>
+            <li class="answer" onclick="checkAnswer(this)">Flase</li>
+        </ul>
+    </div>
 
-        <div class="flex flex-col justify-center items-center py-8 px-4 w-full space-y-12 bg-white lg:flex-row-reverse lg:justify-between lg:space-y-0">
-            <div class="max-w-[25em] max-h-[25em] overflow-hidden">
-                <img class="object-cover relative -top-5" src="src/img/IvanCapitol.png" alt="Ivan at the Capitol"/>  
-            </div>
+    <div class="flashcard">
+        <p class="question">In the Shared Responsibility Model, the customer is responsible for which of the next:</p>
+        <ul class="answers">
+            <li class="answer" onclick="checkAnswer2(this)">Control the operating system</li>
+            <li class="answer" onclick="checkAnswer2(this)">Control the security of VMs </li>
+            <li class="answer" onclick="checkAnswer2(this)">Managing updates, patches, and logical firewall.</li>
+            <li class="answer" onclick="checkAnswer2(this)">None of the above. </li>
+        </ul>
+    </div>
 
-            <div class="flex flex-col justify-center items-center space-y-12 lg:items-start lg:justify-between">
-                <h1 class="text-5xl text-gray-900" >Hi, Ivan Regino</h1> 
-                <p class="max-w-[24em] text-2xl text-gray-500 text-center lg:text-left">I’m a software developer and here is my portfolio website. Here you’ll learn about my journey as a software developer.</p>
-                <button class="bg-red-600 hover:bg-red-500 active:bg-red-700 py-4 px-8 rounded text-white text-base font-semibold focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-1 w-full lg:w-auto">
-                    Hire me
-                </button>
+    <div class="flashcard">
+        <p class="question">What option accurately describes risk transfer.</p>
+        <ul class="answers">
+            <li class="answer" onclick="checkAnswer3(this)">Pass the risk to a third-party company.</li>
+            <li class="answer" onclick="checkAnswer3(this)">No to take any action.</li>
+            <li class="answer" onclick="checkAnswer3(this)">Implement more security systems.</li>
+            <li class="answer" onclick="checkAnswer3(this)">None of the above. </li>
+        </ul>
+    </div>
+    
+    <div class="flashcard">
+        <p class="question">What of the following sentences describes what a Root AWS account is?</p>
+        <ul class="answers">
+            <li class="answer" onclick="checkAnswer4(this)">A default account that has a standard password that needs to be changed eventually.</li>
+            <li class="answer" onclick="checkAnswer4(this)">Account used only to manage VMs.</li>
+            <li class="answer" onclick="checkAnswer4(this)">Default account created when first creating an amazon account.</li>
+            <li class="answer" onclick="checkAnswer4(this)">None of the above.</li>
+        </ul>
+    </div>
 
-            </div>
-        </div>
-        </header>
+    <div class="flashcard">
+        <p class="question">What is VPC used for?</p>
+        <ul class="answers">
+            <li class="answer" onclick="checkAnswer5(this)">A wizard used to monitor your network. </li>
+            <li class="answer" onclick="checkAnswer5(this)">Virtual Property Compute used for encryption and decryption </li>
+            <li class="answer" onclick="checkAnswer5(this)">Virtual Private Cloud is used to monitor services</li>
+            <li class="answer" onclick="checkAnswer5(this)">Virtual Private Cloud is used to create networks within a cloud.</li> 
+        </ul>
+    </div>
 
-        <div id="skills" class="bg-gray-100">
+    <div class="flashcard">
+        <p class="question">What does AMIs stand for?</p>
+        <ul class="answers">
+            <li class="answer" onclick="checkAnswer6(this)">Amazon Machine Images. Amazon templates machine image that contains the configuration for applications.</li>
+            <li class="answer" onclick="checkAnswer6(this)">Access Management Integrations.</li>
+            <li class="answer" onclick="checkAnswer6(this)">Amazon Management Instance.</li>
+            <li class="answer" onclick="checkAnswer6(this)">Automated Machine Intrusion. </li>
+        </ul>
+    </div>
 
-         <h2 class="text-3xl font-bold leading-9 text-center text-red-600 pt-6 pb-8">Skills</h2>
-
-         <div id="skills-container" class="flex flex-col justify-center items-center p-2 gap-12 lg:flex lg:flex-row-reverse lg:justify-between lg:items-center">
-
-            <div id="skill-image" class="w-[400px] h-[400px] flex flex-col items-start overflow-hidden">
-               <img src="src/img/Brain400.jpg" alt="Brain mix with technology"/>
-            </div>
-            <div class="flex flex-col justify-center items-center pl-6 pr-214  lg:flex lg:flex-row lg:justify-center lg:items-center lg:w-auto ">  
-
-               <div class="flex flex-col justify-center items-center p-0 gap-y-2 w-[200px] h-[256px]">
-                  <img src="src/img/CSS3200.png" alt="CSS3 Icon"/>
-                  
-               </div>
-
-               <div class="flex flex-col justify-center items-center p-0 gap-y-2 w-[200px] h-[256px]">
-                  <img src="src/img/html5200.png" alt="CSS3 Icon"/>
-                  
-               </div>
-
-               <div class="flex flex-col justify-center items-center p-0 gap-y-2 w-[200px] h-[256px]">
-                  <img src="src/img/JS200.png" alt="CSS3 Icon"/>
-                  
-               </div>
-
-            </div>
-
-         </div>
-
-       </div>  
-
-       <div id="projects" class="pt-8 px-16">
-
-         <div>
-            <h2 class="text-3xl font-bold text-center text-red-600 pt-6"> Projects </h2>
-         </div>
-        <div> 
-         
-         <div class="mt-12">
-            <p class="text-2xl font-regular text-center text-gray-500 pb-8"> Some of my projects include </p>
-         </div>
-
-         <div class="flex flex-col justify-center items-center px-12 pb-16 pt-39 gap-12 lg:flex lg:flex-row lg:justify-between lg:items-center lg:w-auto">
-
-            <div class="w-[360px] flex flex-col justify-center items-center pt-0 pr-33 overflow-hidden gap-8 border border-gray-400 rounded lg:flex lg:justify-between lg:items-center">
-               <img class="w-full" src="src/img/wordpress.svg" alt="Network Plus Certification Image"/>
-               <p class="flex items-center text-lg font-normal text-center leading-7 text-gray-500">Made a Ecomerece Site using Wordpress and CSS</p>
-               <a href="https://reginoluxuryimports.com/" class=" text-2xl font-semibold text-sky-500 py-1 px-2">See more</a>
-            </div>
-
-            <div class="w-[360px] flex flex-col justify-center items-center pt-0 pr-33 overflow-hidden gap-8 border border-gray-400 rounded lg:flex lg:justify-between lg:items-center">
-               <img class="w-full" src="src/img/wordpress.svg" alt="Network Plus Certification Image"/>
-               <p class="flex items-center text-lg font-normal text-center leading-7 text-gray-500">I am an enthusiastic business owner and entrepreneur </p>
-               <a href="https://www.felipeandgrace.com/" class=" text-2xl font-semibold text-sky-500 py-1 px-2">See more</a>
-            </div>
-
-            <div class="w-[360px] flex flex-col justify-center items-center pt-0 pr-33 overflow-hidden gap-8 border border-gray-400 rounded lg:flex lg:justify-between lg:items-center">
-               <img class="w-full" src="src/img/networkpro2.png" alt="Network Plus Certification Image"/>
-               <p class="flex items-center text-lg font-normal text-center leading-7 text-gray-500">Network+ Certified</p>
-               <a href="https://reginoluxuryimports.com/" class=" text-2xl font-semibold text-sky-500 py-1 px-2">See more</a>
-            </div>
-
-         </div>
-
-        </div>      
-       </div>
-
-       <div id="contact" class="bg-gray-100 ">
-
-         <div class="flex justify-center items-center pt-6 pb-8">
-            <h2 class="font-bold text-3xl text-red-600 text-center leading-9">Contact me</h2>
-         </div>
-
-         <div id="contact-container" class="gap-12 flex flex-col justify-center items-center px-10 pt-2 pb-6 lg:flex lg:flex-row lg:justify-between lg:items-center">
-
-            <div class="bg-red-200 w-[400px] h-[400px] ">
-               <img  src="src/img/Contact.jpg" alt="Network Plus Certification Image"/>
-            </div>
-
-            <div id="form" class="w-[464px] h-[288px] flex flex-col items-start px-4 gap-8">
-
-               <form class="w-[432px] h-[60px] px-4 rounded border-gray-400 bg-white flex flex-row items-center border shadow-sm">
-                  <input type="text" id="emailaddress" name="emailaddress" placeholder="Email address" class="text-lg font-regular leading-7 text-gray-500">
-               </form>
-
-               <form class="w-[432px] h-[128px] pt-8 px-4 rounded border-gray-400 bg-white flex flex-row items-start border shadow-sm"> 
-                  <input type="text" id="message" name="message" placeholder="Message" class="text-lg font-regular leading-7 text-gray-500">
-               </form>
-
-               <button class="w-[432px] h-[56px] pt-8 px-4 pb-3 rounded bg-sky-600 flex flex-col justify-center items-center lg:w-[101px] lg:h-[56px]">
-                  <p class="text-base leading-6 text-white text-center pb-4">Send</p>
-               </button>
-
-            </div>
-
-         </div> 
-
-       </div>
-
-       <footer id="footer" class="flex flex-col justify-center items-center py-6 gap-8 bg-sky-700 lg:flex-row lg:justify-between lg:px-16">
-         <div id="social-media" class="flex flex-col justify-center items-center py-26 gap-8">
-            <p class="text-white font-semibold text-center">My social media links</p>
-            <div id="icons-grid" class="flex flex-row justify-center items-center gap-6"> 
-               <img src="src/img/tw.svg" alt="Twiter Icon "/>
-               <img src="src/img/whats.svg" alt="whats up icon"/>
-               <img src="src/img/linked.svg" alt="linked icon"/>
-            </div>
-         </div>
-         <div id="my-github" class="flex flex-col justify-center items-center py-26 gap-8">
-            <p class="text-white font-semibold text-center">More projects I've worked on</p>
-            <div id="icons-grid" class="flex flex-row justify-center items-center gap-6 text-white"> 
-               <img src="src/img/git.svg" alt="Twiter Icon "/>
-               <p><a class="text-sky-400">@Ivan_RegRock</a> on github</p>
-            </div>
-         </div>
-       </footer>
-     </div>
+ 
 </body>
 </html>
