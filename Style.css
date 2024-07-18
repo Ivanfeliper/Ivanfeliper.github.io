@@ -38,3 +38,12 @@ Option2
             width: 300px;
             text-align: center;
         }
+
+.flash-card h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .flash-card p {
+            font-size: 16px;
+            color: #555;
+        }
