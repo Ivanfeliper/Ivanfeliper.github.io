@@ -4,7 +4,6 @@ body {
     justify-content: center;
     min-height: 100vh;
     padding: 30px;
-    margin-left:500px ;
     color: #224;
     background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e);
   }
