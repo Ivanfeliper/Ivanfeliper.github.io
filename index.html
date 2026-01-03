@@ -1,323 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Monthly To-Do List & Habit Tracker</title>
+  <meta charset="UTF-8">
+  <title>Circular Habit Tracker</title>
   <style>
-    /* Page setup */
-    * {
-      box-sizing: border-box;
-    }
-
     body {
-      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: #f5f5f5;
       margin: 0;
-      padding: 20px;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
+      align-items: center;
     }
 
-    .page {
-      background: #ffffff;
-      width: 900px;
-      padding: 30px 40px;
-      box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    .tracker-page {
+      background: #fff;
+      padding: 32px 40px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.12);
     }
 
-    /* Header */
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 24px;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 10px;
+    .tracker-header {
+      text-align: center;
+      margin-bottom: 16px;
     }
 
-    .header-title {
+    .tracker-header h1 {
+      margin: 0;
       font-size: 22px;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.18em;
     }
 
-    .header-month {
-      font-size: 14px;
+    .tracker-header .month-row {
+      margin-top: 8px;
+      font-size: 13px;
     }
 
-    .header-month label {
+    .tracker-header .month-row label {
       font-weight: 600;
       margin-right: 6px;
     }
 
-    .header-month input {
+    .tracker-header .month-row input {
       border: none;
       border-bottom: 1px solid #333;
       padding: 2px 4px;
-      font-size: 14px;
       min-width: 160px;
-    }
-
-    /* Layout: habits left, grid right */
-    .tracker-layout {
-      display: grid;
-      grid-template-columns: 160px 1fr;
-      column-gap: 20px;
-      align-items: flex-start;
-    }
-
-    /* Habit list */
-    .habit-list-title {
       font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 8px;
+    }
+
+    .tracker-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 24px;
     }
 
     .habit-list {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
+      font-size: 12px;
+    }
+
+    .habit-list-title {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 4px;
     }
 
     .habit-list input {
-      width: 100%;
       border: none;
       border-bottom: 1px solid #ccc;
-      padding: 4px 2px;
-      font-size: 13px;
+      padding: 3px 2px;
+      font-size: 12px;
+      width: 140px;
     }
 
-    /* Grid container */
-    .grid-wrapper {
-      overflow-x: auto;
+    /* SVG container */
+    .tracker-svg {
+      width: 520px;   /* adjust for your layout */
+      height: 520px;
     }
 
-    .habit-grid {
-      border-collapse: collapse;
-      width: 100%;
-      table-layout: fixed;
-      font-size: 11px;
-    }
-
-    .habit-grid th,
-    .habit-grid td {
-      border: 1px solid #ddd;
-      text-align: center;
-      padding: 4px;
-    }
-
-    /* Header row for days */
-    .habit-grid thead th {
-      font-weight: 600;
-      padding: 4px 2px;
-      background: #f1f1f1;
-    }
-
-    .habit-grid thead th.day-label {
-      width: 22px;
-    }
-
-    /* First column for habit numbers or names (optional) */
-    .habit-grid tbody th {
-      font-weight: 400;
-      background: #fafafa;
-      width: 26px;
-    }
-
-    /* Cells for ticking */
-    .habit-grid td {
-      height: 20px;
-      position: relative;
-    }
-
-    /* Optional: draw faint circle inside each cell (to mimic check circles) */
-    .habit-grid td::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      border: 1px solid #ddd;
-      transform: translate(-50%, -50%);
-    }
-
-    /* Print styles */
-    @media print {
-      body {
-        background: #ffffff;
-        padding: 0;
-      }
-
-      .page {
-        box-shadow: none;
-        width: 100%;
-        padding: 20px 30px;
-      }
+    /* default text style inside SVG */
+    svg text {
+      font-family: inherit;
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <!-- Header -->
-    <div class="header">
-      <div class="header-title">Monthly To-Do List & Habit Tracker</div>
-      <div class="header-month">
+  <div class="tracker-page">
+    <div class="tracker-header">
+      <h1>Habit Tracker</h1>
+      <div class="month-row">
         <label for="month">Month of:</label>
-        <input id="month" type="text" placeholder="January 2026" />
+        <input id="month" type="text" placeholder="January 2026">
       </div>
     </div>
 
-    <!-- Layout -->
-    <div class="tracker-layout">
+    <div class="tracker-wrapper">
       <!-- Habit names on the left -->
       <div>
         <div class="habit-list-title">Habits</div>
         <div class="habit-list">
-          <input type="text" placeholder="Habit 1" />
-          <input type="text" placeholder="Habit 2" />
-          <input type="text" placeholder="Habit 3" />
-          <input type="text" placeholder="Habit 4" />
-          <input type="text" placeholder="Habit 5" />
-          <input type="text" placeholder="Habit 6" />
-          <input type="text" placeholder="Habit 7" />
-          <input type="text" placeholder="Habit 8" />
-          <input type="text" placeholder="Habit 9" />
-          <input type="text" placeholder="Habit 10" />
+          <input type="text" placeholder="Habit 1">
+          <input type="text" placeholder="Habit 2">
+          <input type="text" placeholder="Habit 3">
+          <input type="text" placeholder="Habit 4">
+          <input type="text" placeholder="Habit 5">
+          <input type="text" placeholder="Habit 6">
+          <input type="text" placeholder="Habit 7">
+          <input type="text" placeholder="Habit 8">
+          <input type="text" placeholder="Habit 9">
+          <input type="text" placeholder="Habit 10">
         </div>
       </div>
 
-      <!-- Grid on the right -->
-      <div class="grid-wrapper">
-        <table class="habit-grid">
-          <thead>
-            <tr>
-              <!-- empty top-left cell or label -->
-              <th></th>
-              <!-- days 1–31 -->
-              <!-- you can remove some if you want a 30/28-day month -->
-              <!-- header cells are narrow so it fits -->
-              <!-- first header row: day numbers -->
-              <!-- if you want weekday letters, you can add another row -->
-              <!-- Days -->
-              <!-- We'll do 1–31 -->
-              <th class="day-label">1</th>
-              <th class="day-label">2</th>
-              <th class="day-label">3</th>
-              <th class="day-label">4</th>
-              <th class="day-label">5</th>
-              <th class="day-label">6</th>
-              <th class="day-label">7</th>
-              <th class="day-label">8</th>
-              <th class="day-label">9</th>
-              <th class="day-label">10</th>
-              <th class="day-label">11</th>
-              <th class="day-label">12</th>
-              <th class="day-label">13</th>
-              <th class="day-label">14</th>
-              <th class="day-label">15</th>
-              <th class="day-label">16</th>
-              <th class="day-label">17</th>
-              <th class="day-label">18</th>
-              <th class="day-label">19</th>
-              <th class="day-label">20</th>
-              <th class="day-label">21</th>
-              <th class="day-label">22</th>
-              <th class="day-label">23</th>
-              <th class="day-label">24</th>
-              <th class="day-label">25</th>
-              <th class="day-label">26</th>
-              <th class="day-label">27</th>
-              <th class="day-label">28</th>
-              <th class="day-label">29</th>
-              <th class="day-label">30</th>
-              <th class="day-label">31</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- 10 habit rows -->
-            <!-- left header cell: habit index (1–10) -->
-            <!-- cells: circles to tick -->
-            <tr>
-              <th>1</th>
-              <!-- 31 cells -->
-              <!-- you can fill these with ✔ later if you want digital marks -->
-              <!-- or print and fill by hand -->
-              <!-- row 1 -->
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-            </tr>
-            <tr>
-              <th>2</th>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-            </tr>
-            <tr>
-              <th>3</th>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-            </tr>
-            <tr>
-              <th>4</th>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-            </tr>
-            <tr>
-              <th>5</th>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-            </tr>
-            <tr>
-              <th>6</th>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-            </tr>
-            <tr>
-              <th>7</th>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-            </tr>
-            <tr>
-              <th>8</th>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-            </tr>
-            <tr>
-              <th>9</th>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-            </tr>
-            <tr>
-              <th>10</th>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-              <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <!-- Circle grid using SVG -->
+      <svg class="tracker-svg" viewBox="-260 -260 520 520" id="trackerSvg">
+        <!-- grid will be drawn by JS -->
+      </svg>
     </div>
   </div>
+
+  <script>
+    const svg = document.getElementById("trackerSvg");
+
+    const totalDays = 31;
+    const habitRows = 10;
+
+    // radii for rings
+    const innerRadius = 40;   // center "empty" radius
+    const outerRadius = 220;  // outermost grid radius
+    const step = (outerRadius - innerRadius) / habitRows;
+
+    // draw concentric circles (one per habit row)
+    for (let i = 1; i <= habitRows; i++) {
+      const r = innerRadius + step * i;
+      const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      circle.setAttribute("cx", 0);
+      circle.setAttribute("cy", 0);
+      circle.setAttribute("r", r.toFixed(2));
+      circle.setAttribute("fill", "none");
+      circle.setAttribute("stroke", "#dddddd");
+      circle.setAttribute("stroke-width", "0.8");
+      svg.appendChild(circle);
+    }
+
+    // draw radial lines (one per day)
+    for (let i = 0; i < totalDays; i++) {
+      const angle = (i / totalDays) * 2 * Math.PI - Math.PI / 2; // start at top
+
+      const x1 = innerRadius * Math.cos(angle);
+      const y1 = innerRadius * Math.sin(angle);
+      const x2 = outerRadius * Math.cos(angle);
+      const y2 = outerRadius * Math.sin(angle);
+
+      const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+      line.setAttribute("x1", x1.toFixed(2));
+      line.setAttribute("y1", y1.toFixed(2));
+      line.setAttribute("x2", x2.toFixed(2));
+      line.setAttribute("y2", y2.toFixed(2));
+      line.setAttribute("stroke", "#dddddd");
+      line.setAttribute("stroke-width", "0.8");
+      svg.appendChild(line);
+    }
+
+    // day numbers around the outside
+    const labelRadius = outerRadius + 18;
+
+    for (let i = 0; i < totalDays; i++) {
+      const dayNumber = i + 1;
+      const angle = (i / totalDays) * 2 * Math.PI - Math.PI / 2;
+
+      const x = labelRadius * Math.cos(angle);
+      const y = labelRadius * Math.sin(angle) + 3; // vertical tweak
+
+      const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      text.textContent = dayNumber;
+      text.setAttribute("x", x.toFixed(2));
+      text.setAttribute("y", y.toFixed(2));
+      text.setAttribute("font-size", "9");
+      text.setAttribute("text-anchor", "middle");
+      text.setAttribute("fill", "#555555");
+      svg.appendChild(text);
+    }
+
+    // optional: label the habit rows (1–10) inside the circle on the left
+    const labelOffset = innerRadius + step / 2;
+    for (let i = 0; i < habitRows; i++) {
+      const r = innerRadius + step * i + step / 2;
+      const x = - (r * 0.98); // slightly left
+      const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      text.textContent = i + 1;
+      text.setAttribute("x", x.toFixed(2));
+      text.setAttribute("y", "3");
+      text.setAttribute("font-size", "9");
+      text.setAttribute("text-anchor", "middle");
+      text.setAttribute("fill", "#999999");
+      svg.appendChild(text);
+    }
+  </script>
 </body>
 </html>
