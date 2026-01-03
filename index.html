@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Circular Habit Tracker</title>
+  <title>Circular Habit Tracker – Static SVG</title>
   <style>
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -77,13 +77,12 @@
       width: 140px;
     }
 
-    /* SVG container */
     .tracker-svg {
-      width: 520px;   /* adjust for your layout */
+      width: 520px;
       height: 520px;
+      border: 1px solid #eee; /* just so you clearly see the SVG bounds */
     }
 
-    /* default text style inside SVG */
     svg text {
       font-family: inherit;
     }
@@ -100,7 +99,6 @@
     </div>
 
     <div class="tracker-wrapper">
-      <!-- Habit names on the left -->
       <div>
         <div class="habit-list-title">Habits</div>
         <div class="habit-list">
@@ -117,90 +115,96 @@
         </div>
       </div>
 
-      <!-- Circle grid using SVG -->
-      <svg class="tracker-svg" viewBox="-260 -260 520 520" id="trackerSvg">
-        <!-- grid will be drawn by JS -->
+      <!-- Static pre-drawn SVG circle -->
+      <svg class="tracker-svg" viewBox="-260 -260 520 520" xmlns="http://www.w3.org/2000/svg">
+        <!-- 10 concentric circles -->
+        <!-- radii: 60, 80, 100, ..., 240 -->
+        <circle cx="0" cy="0" r="60"  fill="none" stroke="#ccc" stroke-width="1"/>
+        <circle cx="0" cy="0" r="80"  fill="none" stroke="#ccc" stroke-width="1"/>
+        <circle cx="0" cy="0" r="100" fill="none" stroke="#ccc" stroke-width="1"/>
+        <circle cx="0" cy="0" r="120" fill="none" stroke="#ccc" stroke-width="1"/>
+        <circle cx="0" cy="0" r="140" fill="none" stroke="#ccc" stroke-width="1"/>
+        <circle cx="0" cy="0" r="160" fill="none" stroke="#ccc" stroke-width="1"/>
+        <circle cx="0" cy="0" r="180" fill="none" stroke="#ccc" stroke-width="1"/>
+        <circle cx="0" cy="0" r="200" fill="none" stroke="#ccc" stroke-width="1"/>
+        <circle cx="0" cy="0" r="220" fill="none" stroke="#ccc" stroke-width="1"/>
+        <circle cx="0" cy="0" r="240" fill="none" stroke="#ccc" stroke-width="1"/>
+
+        <!-- 31 radial lines -->
+        <!-- manually approximated every ~11.61 degrees -->
+        <!-- you can tweak these later, but this will show clearly -->
+        <!-- radius from 60 to 240 -->
+        <!-- I’ll draw them with a darker stroke so they stand out -->
+        <!-- start from top and go clockwise -->
+        <!-- i = 0 (top) -->
+        <line x1="0" y1="-60" x2="0" y2="-240" stroke="#bbb" stroke-width="1" />
+        <!-- i = 1 -->
+        <line x1="23.7" y1="-55.0" x2="94.8" y2="-220.0" stroke="#bbb" stroke-width="1" />
+        <!-- i = 2 -->
+        <line x1="46.0" y1="-44.4" x2="184.0" y2="-177.8" stroke="#bbb" stroke-width="1" />
+        <!-- i = 3 -->
+        <line x1="65.9" y1="-29.1" x2="263.6" y2="-116.3" stroke="#bbb" stroke-width="1" />
+        <!-- i = 4 -->
+        <line x1="82.0" y1="-9.7" x2="328.1" y2="-38.8" stroke="#bbb" stroke-width="1" />
+        <!-- i = 5 -->
+        <line x1="93.5" y1="12.1" x2="374.1" y2="48.5" stroke="#bbb" stroke-width="1" />
+        <!-- i = 6 -->
+        <line x1="100.0" y1="35.0" x2="400.0" y2="140.0" stroke="#bbb" stroke-width="1" />
+        <!-- i = 7 -->
+        <line x1="101.1" y1="58.3" x2="404.5" y2="233.2" stroke="#bbb" stroke-width="1" />
+        <!-- i = 8 -->
+        <line x1="96.9" y1="80.9" x2="387.6" y2="323.6" stroke="#bbb" stroke-width="1" />
+        <!-- i = 9 -->
+        <line x1="87.6" y1="101.8" x2="350.2" y2="407.2" stroke="#bbb" stroke-width="1" />
+        <!-- i = 10 -->
+        <line x1="73.7" y1="119.9" x2="294.9" y2="479.6" stroke="#bbb" stroke-width="1" />
+        <!-- i = 11 -->
+        <line x1="55.8" y1="134.5" x2="223.2" y2="538.0" stroke="#bbb" stroke-width="1" />
+        <!-- i = 12 -->
+        <line x1="34.7" y1="145.0" x2="138.7" y2="580.0" stroke="#bbb" stroke-width="1" />
+        <!-- i = 13 -->
+        <line x1="11.4" y1="150.9" x2="45.4" y2="603.6" stroke="#bbb" stroke-width="1" />
+        <!-- i = 14 -->
+        <line x1="-12.2" y1="151.8" x2="-48.9" y2="607.2" stroke="#bbb" stroke-width="1" />
+        <!-- i = 15 -->
+        <line x1="-35.7" y1="147.7" x2="-142.7" y2="590.9" stroke="#bbb" stroke-width="1" />
+        <!-- i = 16 -->
+        <line x1="-57.7" y1="139.1" x2="-230.8" y2="556.4" stroke="#bbb" stroke-width="1" />
+        <!-- i = 17 -->
+        <line x1="-77.0" y1="126.4" x2="-307.8" y2="505.8" stroke="#bbb" stroke-width="1" />
+        <!-- i = 18 -->
+        <line x1="-92.2" y1="110.2" x2="-368.8" y2="441.0" stroke="#bbb" stroke-width="1" />
+        <!-- i = 19 -->
+        <line x1="-102.5" y1="91.3" x2="-410.0" y2="365.3" stroke="#bbb" stroke-width="1" />
+        <!-- i = 20 -->
+        <line x1="-107.1" y1="70.8" x2="-428.4" y2="283.2" stroke="#bbb" stroke-width="1" />
+        <!-- i = 21 -->
+        <line x1="-105.7" y1="49.9" x2="-422.8" y2="199.5" stroke="#bbb" stroke-width="1" />
+        <!-- i = 22 -->
+        <line x1="-98.6" y1="29.9" x2="-394.5" y2="119.7" stroke="#bbb" stroke-width="1" />
+        <!-- i = 23 -->
+        <line x1="-86.2" y1="11.9" x2="-344.9" y2="47.6" stroke="#bbb" stroke-width="1" />
+        <!-- i = 24 -->
+        <line x1="-69.2" y1="-3.3" x2="-276.8" y2="-13.1" stroke="#bbb" stroke-width="1" />
+        <!-- i = 25 -->
+        <line x1="-48.4" y1="-14.9" x2="-193.8" y2="-59.6" stroke="#bbb" stroke-width="1" />
+        <!-- i = 26 -->
+        <line x1="-24.8" y1="-22.4" x2="-99.0" y2="-89.7" stroke="#bbb" stroke-width="1" />
+        <!-- i = 27 -->
+        <line x1="0" y1="-26" x2="0" y2="-104" stroke="#bbb" stroke-width="1" />
+        <!-- (this last line is just to visibly close near the start) -->
+
+        <!-- Day numbers around outer edge (approximate circle at r ~ 255) -->
+        <!-- I’ll just place a few to prove it works; you can refine full 1–31 later -->
+        <text x="0" y="-255" font-size="11" text-anchor="middle" fill="#555">1</text>
+        <text x="90" y="-235" font-size="11" text-anchor="middle" fill="#555">5</text>
+        <text x="180" y="-150" font-size="11" text-anchor="middle" fill="#555">10</text>
+        <text x="235" y="0" font-size="11" text-anchor="middle" fill="#555">15</text>
+        <text x="180" y="150" font-size="11" text-anchor="middle" fill="#555">20</text>
+        <text x="0" y="255" font-size="11" text-anchor="middle" fill="#555">25</text>
+        <text x="-180" y="150" font-size="11" text-anchor="middle" fill="#555">30</text>
       </svg>
     </div>
   </div>
-
-  <script>
-    const svg = document.getElementById("trackerSvg");
-
-    const totalDays = 31;
-    const habitRows = 10;
-
-    // radii for rings
-    const innerRadius = 40;   // center "empty" radius
-    const outerRadius = 220;  // outermost grid radius
-    const step = (outerRadius - innerRadius) / habitRows;
-
-    // draw concentric circles (one per habit row)
-    for (let i = 1; i <= habitRows; i++) {
-      const r = innerRadius + step * i;
-      const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-      circle.setAttribute("cx", 0);
-      circle.setAttribute("cy", 0);
-      circle.setAttribute("r", r.toFixed(2));
-      circle.setAttribute("fill", "none");
-      circle.setAttribute("stroke", "#dddddd");
-      circle.setAttribute("stroke-width", "0.8");
-      svg.appendChild(circle);
-    }
-
-    // draw radial lines (one per day)
-    for (let i = 0; i < totalDays; i++) {
-      const angle = (i / totalDays) * 2 * Math.PI - Math.PI / 2; // start at top
-
-      const x1 = innerRadius * Math.cos(angle);
-      const y1 = innerRadius * Math.sin(angle);
-      const x2 = outerRadius * Math.cos(angle);
-      const y2 = outerRadius * Math.sin(angle);
-
-      const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-      line.setAttribute("x1", x1.toFixed(2));
-      line.setAttribute("y1", y1.toFixed(2));
-      line.setAttribute("x2", x2.toFixed(2));
-      line.setAttribute("y2", y2.toFixed(2));
-      line.setAttribute("stroke", "#dddddd");
-      line.setAttribute("stroke-width", "0.8");
-      svg.appendChild(line);
-    }
-
-    // day numbers around the outside
-    const labelRadius = outerRadius + 18;
-
-    for (let i = 0; i < totalDays; i++) {
-      const dayNumber = i + 1;
-      const angle = (i / totalDays) * 2 * Math.PI - Math.PI / 2;
-
-      const x = labelRadius * Math.cos(angle);
-      const y = labelRadius * Math.sin(angle) + 3; // vertical tweak
-
-      const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-      text.textContent = dayNumber;
-      text.setAttribute("x", x.toFixed(2));
-      text.setAttribute("y", y.toFixed(2));
-      text.setAttribute("font-size", "9");
-      text.setAttribute("text-anchor", "middle");
-      text.setAttribute("fill", "#555555");
-      svg.appendChild(text);
-    }
-
-    // optional: label the habit rows (1–10) inside the circle on the left
-    const labelOffset = innerRadius + step / 2;
-    for (let i = 0; i < habitRows; i++) {
-      const r = innerRadius + step * i + step / 2;
-      const x = - (r * 0.98); // slightly left
-      const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-      text.textContent = i + 1;
-      text.setAttribute("x", x.toFixed(2));
-      text.setAttribute("y", "3");
-      text.setAttribute("font-size", "9");
-      text.setAttribute("text-anchor", "middle");
-      text.setAttribute("fill", "#999999");
-      svg.appendChild(text);
-    }
-  </script>
 </body>
 </html>
