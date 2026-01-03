@@ -2,164 +2,322 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Habit Tracker</title>
+  <title>Monthly To-Do List & Habit Tracker</title>
   <style>
+    /* Page setup */
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: sans-serif;
-      background: #f9f9f9;
-      padding: 40px;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 20px;
       display: flex;
       justify-content: center;
     }
 
-    .container {
-      display: flex;
-      gap: 40px;
-      align-items: center;
+    .page {
+      background: #ffffff;
+      width: 900px;
+      padding: 30px 40px;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
     }
 
-    .habit-labels {
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 24px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+    }
+
+    .header-title {
+      font-size: 22px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .header-month {
+      font-size: 14px;
+    }
+
+    .header-month label {
+      font-weight: 600;
+      margin-right: 6px;
+    }
+
+    .header-month input {
+      border: none;
+      border-bottom: 1px solid #333;
+      padding: 2px 4px;
+      font-size: 14px;
+      min-width: 160px;
+    }
+
+    /* Layout: habits left, grid right */
+    .tracker-layout {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      column-gap: 20px;
+      align-items: flex-start;
+    }
+
+    /* Habit list */
+    .habit-list-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 8px;
+    }
+
+    .habit-list {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      gap: 24px;
+      gap: 8px;
     }
 
-    .habit-labels input {
-      width: 120px;
-      padding: 4px;
-      font-size: 14px;
+    .habit-list input {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid #ccc;
+      padding: 4px 2px;
+      font-size: 13px;
     }
 
-    .tracker {
-      position: relative;
-      width: 600px;
-      height: 600px;
-      border-radius: 50%;
-      background: white;
-      box-shadow: 0 0 0 1px #ccc;
+    /* Grid container */
+    .grid-wrapper {
+      overflow-x: auto;
     }
 
-    .title {
-      position: absolute;
-      top: -60px;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
+    .habit-grid {
+      border-collapse: collapse;
+      width: 100%;
+      table-layout: fixed;
+      font-size: 11px;
     }
 
-    .title h2 {
-      margin: 0;
-      font-size: 20px;
-      text-transform: uppercase;
-    }
-
-    .title label {
-      font-size: 14px;
-    }
-
-    .title input {
-      margin-left: 8px;
-      padding: 2px 6px;
-      font-size: 14px;
-    }
-
-    .ring {
-      position: absolute;
+    .habit-grid th,
+    .habit-grid td {
       border: 1px solid #ddd;
-      border-radius: 50%;
-      left: 50%;
+      text-align: center;
+      padding: 4px;
+    }
+
+    /* Header row for days */
+    .habit-grid thead th {
+      font-weight: 600;
+      padding: 4px 2px;
+      background: #f1f1f1;
+    }
+
+    .habit-grid thead th.day-label {
+      width: 22px;
+    }
+
+    /* First column for habit numbers or names (optional) */
+    .habit-grid tbody th {
+      font-weight: 400;
+      background: #fafafa;
+      width: 26px;
+    }
+
+    /* Cells for ticking */
+    .habit-grid td {
+      height: 20px;
+      position: relative;
+    }
+
+    /* Optional: draw faint circle inside each cell (to mimic check circles) */
+    .habit-grid td::before {
+      content: "";
+      position: absolute;
       top: 50%;
+      left: 50%;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1px solid #ddd;
       transform: translate(-50%, -50%);
     }
 
-    /* 10 rings for 10 habits */
-    .ring.r1 { width: 580px; height: 580px; }
-    .ring.r2 { width: 520px; height: 520px; }
-    .ring.r3 { width: 460px; height: 460px; }
-    .ring.r4 { width: 400px; height: 400px; }
-    .ring.r5 { width: 340px; height: 340px; }
-    .ring.r6 { width: 280px; height: 280px; }
-    .ring.r7 { width: 220px; height: 220px; }
-    .ring.r8 { width: 160px; height: 160px; }
-    .ring.r9 { width: 100px; height: 100px; }
-    .ring.r10 { width: 40px; height: 40px; }
+    /* Print styles */
+    @media print {
+      body {
+        background: #ffffff;
+        padding: 0;
+      }
 
-    .days {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      left: 0;
-      top: 0;
-    }
-
-    .day {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 20px;
-      height: 20px;
-      margin: -10px;
-      font-size: 10px;
-      color: #333;
-      transform-origin: 0 0;
+      .page {
+        box-shadow: none;
+        width: 100%;
+        padding: 20px 30px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="habit-labels">
-      <input type="text" placeholder="Habit 1" />
-      <input type="text" placeholder="Habit 2" />
-      <input type="text" placeholder="Habit 3" />
-      <input type="text" placeholder="Habit 4" />
-      <input type="text" placeholder="Habit 5" />
-      <input type="text" placeholder="Habit 6" />
-      <input type="text" placeholder="Habit 7" />
-      <input type="text" placeholder="Habit 8" />
-      <input type="text" placeholder="Habit 9" />
-      <input type="text" placeholder="Habit 10" />
+  <div class="page">
+    <!-- Header -->
+    <div class="header">
+      <div class="header-title">Monthly To-Do List & Habit Tracker</div>
+      <div class="header-month">
+        <label for="month">Month of:</label>
+        <input id="month" type="text" placeholder="January 2026" />
+      </div>
     </div>
 
-    <div class="tracker">
-      <div class="title">
-        <h2>Habit Tracker</h2>
-        <label>Month of: <input type="text" placeholder="January" /></label>
+    <!-- Layout -->
+    <div class="tracker-layout">
+      <!-- Habit names on the left -->
+      <div>
+        <div class="habit-list-title">Habits</div>
+        <div class="habit-list">
+          <input type="text" placeholder="Habit 1" />
+          <input type="text" placeholder="Habit 2" />
+          <input type="text" placeholder="Habit 3" />
+          <input type="text" placeholder="Habit 4" />
+          <input type="text" placeholder="Habit 5" />
+          <input type="text" placeholder="Habit 6" />
+          <input type="text" placeholder="Habit 7" />
+          <input type="text" placeholder="Habit 8" />
+          <input type="text" placeholder="Habit 9" />
+          <input type="text" placeholder="Habit 10" />
+        </div>
       </div>
 
-      <!-- Rings -->
-      <div class="ring r1"></div>
-      <div class="ring r2"></div>
-      <div class="ring r3"></div>
-      <div class="ring r4"></div>
-      <div class="ring r5"></div>
-      <div class="ring r6"></div>
-      <div class="ring r7"></div>
-      <div class="ring r8"></div>
-      <div class="ring r9"></div>
-      <div class="ring r10"></div>
-
-      <!-- Days -->
-      <div class="days" id="days"></div>
+      <!-- Grid on the right -->
+      <div class="grid-wrapper">
+        <table class="habit-grid">
+          <thead>
+            <tr>
+              <!-- empty top-left cell or label -->
+              <th></th>
+              <!-- days 1–31 -->
+              <!-- you can remove some if you want a 30/28-day month -->
+              <!-- header cells are narrow so it fits -->
+              <!-- first header row: day numbers -->
+              <!-- if you want weekday letters, you can add another row -->
+              <!-- Days -->
+              <!-- We'll do 1–31 -->
+              <th class="day-label">1</th>
+              <th class="day-label">2</th>
+              <th class="day-label">3</th>
+              <th class="day-label">4</th>
+              <th class="day-label">5</th>
+              <th class="day-label">6</th>
+              <th class="day-label">7</th>
+              <th class="day-label">8</th>
+              <th class="day-label">9</th>
+              <th class="day-label">10</th>
+              <th class="day-label">11</th>
+              <th class="day-label">12</th>
+              <th class="day-label">13</th>
+              <th class="day-label">14</th>
+              <th class="day-label">15</th>
+              <th class="day-label">16</th>
+              <th class="day-label">17</th>
+              <th class="day-label">18</th>
+              <th class="day-label">19</th>
+              <th class="day-label">20</th>
+              <th class="day-label">21</th>
+              <th class="day-label">22</th>
+              <th class="day-label">23</th>
+              <th class="day-label">24</th>
+              <th class="day-label">25</th>
+              <th class="day-label">26</th>
+              <th class="day-label">27</th>
+              <th class="day-label">28</th>
+              <th class="day-label">29</th>
+              <th class="day-label">30</th>
+              <th class="day-label">31</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 10 habit rows -->
+            <!-- left header cell: habit index (1–10) -->
+            <!-- cells: circles to tick -->
+            <tr>
+              <th>1</th>
+              <!-- 31 cells -->
+              <!-- you can fill these with ✔ later if you want digital marks -->
+              <!-- or print and fill by hand -->
+              <!-- row 1 -->
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <th>2</th>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <th>3</th>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <th>4</th>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <th>5</th>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <th>6</th>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <th>7</th>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <th>8</th>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <th>9</th>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <th>10</th>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-
-  <script>
-    const daysContainer = document.getElementById("days");
-    const totalDays = 31;
-    const radius = 290;
-
-    for (let i = 1; i <= totalDays; i++) {
-      const dayEl = document.createElement("div");
-      dayEl.className = "day";
-      dayEl.textContent = i;
-
-      const angle = -90 + (360 / totalDays) * (i - 1);
-      dayEl.style.transform =
-        `rotate(${angle}deg) translateX(${radius}px) rotate(${-angle}deg)`;
-
-      daysContainer.appendChild(dayEl);
-    }
-  </script>
 </body>
 </html>
