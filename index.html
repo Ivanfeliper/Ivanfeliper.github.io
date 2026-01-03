@@ -1,347 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Styles.css"> <!-- Link to your CSS file -->
-    <script src="Script2.js"></script> <!-- Link to your JavaScript file -->
-    <title>Amazon AWS Practitioner Game</title>
+  <meta charset="UTF-8" />
+  <title>Habit Tracker</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f9f9f9;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .habit-labels {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    .habit-labels input {
+      width: 120px;
+      padding: 4px;
+      font-size: 14px;
+    }
+
+    .tracker {
+      position: relative;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: white;
+      box-shadow: 0 0 0 1px #ccc;
+    }
+
+    .title {
+      position: absolute;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+
+    .title h2 {
+      margin: 0;
+      font-size: 20px;
+      text-transform: uppercase;
+    }
+
+    .title label {
+      font-size: 14px;
+    }
+
+    .title input {
+      margin-left: 8px;
+      padding: 2px 6px;
+      font-size: 14px;
+    }
+
+    .ring {
+      position: absolute;
+      border: 1px solid #ddd;
+      border-radius: 50%;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* 10 rings for 10 habits */
+    .ring.r1 { width: 580px; height: 580px; }
+    .ring.r2 { width: 520px; height: 520px; }
+    .ring.r3 { width: 460px; height: 460px; }
+    .ring.r4 { width: 400px; height: 400px; }
+    .ring.r5 { width: 340px; height: 340px; }
+    .ring.r6 { width: 280px; height: 280px; }
+    .ring.r7 { width: 220px; height: 220px; }
+    .ring.r8 { width: 160px; height: 160px; }
+    .ring.r9 { width: 100px; height: 100px; }
+    .ring.r10 { width: 40px; height: 40px; }
+
+    .days {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+    }
+
+    .day {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 20px;
+      height: 20px;
+      margin: -10px;
+      font-size: 10px;
+      color: #333;
+      transform-origin: 0 0;
+    }
+  </style>
 </head>
 <body>
-
-    <div class="rules">
-        <p class="question">IT 335 AWS Cloud Practitioner Essentials Game </p>
-        <p class="question">Click on the option that you believe is the correct answer; if it’s accurate, it will turn green.</p>
-        <p class="footer">IT 355 AWS Practitioner by Ivan Regino</p>
-    </div>
-    
-    <div class="flashcard">
-        <p class="question">1. -  Elasticity is a ASW service that monitors apps to auto modify capacity to stabilize and predict performance?</p>
-        <ul class="answers">
-            <li class="answer" onclick="checkAnswer(this)">True</li>
-            <li class="answer" onclick="checkAnswer(this)">Flase</li>
-        </ul>
-        <p class="footer">IT 355 AWS Practitioner Created by Ivan Regino</p>
+  <div class="container">
+    <div class="habit-labels">
+      <input type="text" placeholder="Habit 1" />
+      <input type="text" placeholder="Habit 2" />
+      <input type="text" placeholder="Habit 3" />
+      <input type="text" placeholder="Habit 4" />
+      <input type="text" placeholder="Habit 5" />
+      <input type="text" placeholder="Habit 6" />
+      <input type="text" placeholder="Habit 7" />
+      <input type="text" placeholder="Habit 8" />
+      <input type="text" placeholder="Habit 9" />
+      <input type="text" placeholder="Habit 10" />
     </div>
 
-    <div class="flashcard">
-        <p class="question">2. -  Every AWS has at least 3 availability zones. </p>
-        <ul class="answers">
-            <li class="answer" onclick="checkAnswer(this)">True</li>
-            <li class="answer" onclick="checkAnswer(this)">Flase</li>
-        </ul>
-        <p class="footer">IT 355 AWS Practitioner Created by Ivan Regino</p>
-    </div>
+    <div class="tracker">
+      <div class="title">
+        <h2>Habit Tracker</h2>
+        <label>Month of: <input type="text" placeholder="January" /></label>
+      </div>
 
-    <div class="flashcard">
-        <p class="question">3. -  In the Shared Responsibility Model, the customer is responsible for which of the next:</p>
-        <ul class="answers">
-            <li class="answer" onclick="checkAnswer2(this)">Control the operating system</li>
-            <li class="answer" onclick="checkAnswer2(this)">Control the security of VMs </li>
-            <li class="answer" onclick="checkAnswer2(this)">Managing updates, patches, and logical firewall.</li>
-            <li class="answer" onclick="checkAnswer2(this)">None of the above. </li>
-        </ul>
-        <p class="footer">IT 355 AWS Practitioner Created by Ivan Regino</p>
-    </div>
+      <!-- Rings -->
+      <div class="ring r1"></div>
+      <div class="ring r2"></div>
+      <div class="ring r3"></div>
+      <div class="ring r4"></div>
+      <div class="ring r5"></div>
+      <div class="ring r6"></div>
+      <div class="ring r7"></div>
+      <div class="ring r8"></div>
+      <div class="ring r9"></div>
+      <div class="ring r10"></div>
 
-    <div class="flashcard">
-        <p class="question">4. -  What option accurately describes risk transfer.</p>
-        <ul class="answers">
-            <li class="answer" onclick="checkAnswer3(this)">Pass the risk to a third-party company.</li>
-            <li class="answer" onclick="checkAnswer3(this)">No to take any action.</li>
-            <li class="answer" onclick="checkAnswer3(this)">Implement more security systems.</li>
-            <li class="answer" onclick="checkAnswer3(this)">None of the above. </li>
-        </ul>
-        <p class="footer">IT 355 AWS Practitioner Created by Ivan Regino</p>
+      <!-- Days -->
+      <div class="days" id="days"></div>
     </div>
-    
-    <div class="flashcard">
-        <p class="question">5. -  What of the following sentences describes what a Root AWS account is?</p>
-        <ul class="answers">
-            <li class="answer" onclick="checkAnswer4(this)">A default account that has a standard password that needs to be changed eventually.</li>
-            <li class="answer" onclick="checkAnswer4(this)">Account used only to manage VMs.</li>
-            <li class="answer" onclick="checkAnswer4(this)">Default account created when first creating an amazon account.</li>
-            <li class="answer" onclick="checkAnswer4(this)">None of the above.</li>
-        </ul>
-        <p class="footer">IT 355 AWS Practitioner Created by Ivan Regino</p>
-    </div>
+  </div>
 
-    <div class="flashcard">
-        <p class="question">6. -  What is VPC used for?</p>
-        <ul class="answers">
-            <li class="answer" onclick="checkAnswer5(this)">A wizard used to monitor your network. </li>
-            <li class="answer" onclick="checkAnswer5(this)">Virtual Property Compute used for encryption and decryption </li>
-            <li class="answer" onclick="checkAnswer5(this)">Virtual Private Cloud is used to monitor services</li>
-            <li class="answer" onclick="checkAnswer5(this)">Virtual Private Cloud is used to create networks within a cloud.</li> 
-        </ul>
-        <p class="footer">IT 355 AWS Practitioner Created by Ivan Regino</p>
-    </div>
+  <script>
+    const daysContainer = document.getElementById("days");
+    const totalDays = 31;
+    const radius = 290;
 
-    <div class="flashcard">
-        <p class="question">7. -  What does AMIs stand for?</p>
-        <ul class="answers">
-            <li class="answer" onclick="checkAnswer6(this)">Amazon Machine Images. Amazon templates machine image that contains the configuration for applications.</li>
-            <li class="answer" onclick="checkAnswer6(this)">Access Management Integrations.</li>
-            <li class="answer" onclick="checkAnswer6(this)">Amazon Management Instance.</li>
-            <li class="answer" onclick="checkAnswer6(this)">Automated Machine Intrusion. </li>
-        </ul>
-        <p class="footer">IT 355 AWS Practitioner Created by Ivan Regino</p>
-    </div>
+    for (let i = 1; i <= totalDays; i++) {
+      const dayEl = document.createElement("div");
+      dayEl.className = "day";
+      dayEl.textContent = i;
 
-    <div class="flashcard">
-        <p class="question">8. -  In the Shared Responsibility Model, the customer is responsible for which of the next:</p>
-        <ul class="answers">
-            <li class="answer" onclick="checkAnswer7(this)">Control the operating system</li>
-            <li class="answer" onclick="checkAnswer7(this)">Control the security of VMs </li>
-            <li class="answer" onclick="checkAnswer7(this)">Managing updates, patches, and logical firewall.</li>
-            <li class="answer" onclick="checkAnswer7(this)">None of the above. </li>
-        </ul>
-        <p class="footer">IT 355 AWS Practitioner Created by Ivan Regino</p>
-    </div>
+      const angle = -90 + (360 / totalDays) * (i - 1);
+      dayEl.style.transform =
+        `rotate(${angle}deg) translateX(${radius}px) rotate(${-angle}deg)`;
 
-    <div class="flashcard">
-        <p class="question">9. -  Which of the following AWS tools helps to safely manage AWS resources?</p>
-        <ul class="answers">
-            <li class="answer" onclick="checkAnswer8(this)">AWS System Manager.</li>
-            <li class="answer" onclick="checkAnswer8(this)">AWS WAF</li>
-            <li class="answer" onclick="checkAnswer8(this)">AWS Shield.</li>
-            <li class="answer" onclick="checkAnswer8(this)">Amazon Interceptor.</li>
-        </ul>
-        <p class="footer">IT 355 AWS Practitioner Created by Ivan Regino</p>
-    </div>
-       
-    </div>
-
-    <div class="flashcard">
-        <p class="question">10. -  What are the three main types of AWS subnets?</p>
-        <ul class="answers">
-            <li class="answer" onclick="checkAnswer9(this)">Public, VPN only, Private.</li>
-            <li class="answer" onclick="checkAnswer9(this)">Private, Public, and Shared.</li>
-            <li class="answer" onclick="checkAnswer9(this)">VPN, Private, and internal.</li>
-            <li class="answer" onclick="checkAnswer9(this)">None of the above. </li>
-        </ul>
-        <p class="footer">IT 355 AWS Practitioner Created by Ivan Regino</p>
-    </div>
-
-    <div class="flashcard">
-        <p class="question">11. -  In Amazon AWS, what are End Points use for:</p>
-        <ul class="answers">
-            <li class="answer" onclick="checkAnswer10(this)">Devices located at the edge of a network to connect servers.</li>
-            <li class="answer" onclick="checkAnswer10(this)">Way to connect to AWS services without the need to have a public IP or default gateway.</li>
-            <li class="answer" onclick="checkAnswer10(this)">Managing updates, patches, and logical firewall.</li>
-            <li class="answer" onclick="checkAnswer10(this)">A gateway device to interconnect AWS firewalls. </li>
-        </ul>
-        <p class="footer">IT 355 AWS Practitioner Created by Ivan Regino</p>
-    </div>
-
-    <div class="flashcard">
-        <p class="question">12. -  As in 2022, AWS is ______ time bigger than Azure Web Services.</p>
-        <ul class="answers">
-            <li class="answer" onclick="checkAnswer11(this)">2</li>
-            <li class="answer" onclick="checkAnswer11(this)">3</li>
-            <li class="answer" onclick="checkAnswer11(this)">4</li>
-            <li class="answer" onclick="checkAnswer11(this)">5</li>
-        </ul>
-        <p class="footer">IT 355 AWS Practitioner Created by Ivan Regino</p>
-    </div>
-
-    <div class="flashcard">
-        <p class="question">13. -  What are the three modalities of AWS free Tier Model:</p>
-        <ul class="answers">
-            <li class="answer" onclick="checkAnswer12(this)">12 Months free, Always free, free trials.</li>
-            <li class="answer" onclick="checkAnswer12(this)">Pay as you go, 12 months free, free subscription.</li>
-            <li class="answer" onclick="checkAnswer12(this)">One time limit, one year free, five years free.</li>
-            <li class="answer" onclick="checkAnswer12(this)">None of the above. </li>
-        </ul>
-        <p class="footer">IT 355 AWS Practitioner Created by Ivan Regino</p>
-    </div>
-
-    <div class="flashcard">
-        <p class="question">14. -  What are three main AWS pricing models?</p>
-        <ul class="answers">
-            <li class="answer" onclick="checkAnswer13(this)">Pay as you go, Save when you Reserve, Pay less when you use More.</li>
-            <li class="answer" onclick="checkAnswer13(this)">One time limit, one year free, five years free.</li>
-            <li class="answer" onclick="checkAnswer13(this)">12 Months free, Always free, free trials.</li>
-            <li class="answer" onclick="checkAnswer13(this)">None of the above. </li>
-        </ul>
-        <p class="footer">IT 355 AWS Practitioner Created by Ivan Regino</p>
-    </div>
-
-    <div class="flashcard">
-        <p class="question">15. -  What AWS tool is used to provide and estimate cost for a business need?</p>
-        <ul class="answers">
-            <li class="answer" onclick="checkAnswer14(this)">DDoS detection </li>
-            <li class="answer" onclick="checkAnswer14(this)">Pricing Calculator.</li>
-            <li class="answer" onclick="checkAnswer14(this)">Cost explorer </li>
-            <li class="answer" onclick="checkAnswer14(this)">Pricing model.</li>
-        </ul>
-        <p class="footer">IT 355 AWS Practitioner Created by Ivan Regino</p>
-    </div>
-
-    <div class="flashcard">
-        <p class="question">16. -  What AWS tool is used to visualize costs and usage daily or monthly.</p>
-        <ul class="answers">
-            <li class="answer" onclick="checkAnswer15(this)">Pricing Calculator.</li>
-            <li class="answer" onclick="checkAnswer15(this)">DDoS detection.</li>
-            <li class="answer" onclick="checkAnswer15(this)">Pricing model.</li>
-            <li class="answer" onclick="checkAnswer15(this)">Cost explorer.</li>
-        </ul>
-        <p class="footer">IT 355 AWS Practitioner Created by Ivan Regino</p>
-    </div>
-
-    <div class="flashcard">
-        <p class="question">17. -  In AWS, which of the following describes geographical locations around the globe that have data centers?</p>
-        <ul class="answers">
-            <li class="answer" onclick="checkAnswer16(this)">VPC</li>
-            <li class="answer" onclick="checkAnswer16(this)">Global Edge Network.</li>
-            <li class="answer" onclick="checkAnswer16(this)">Regions.</li>
-            <li class="answer" onclick="checkAnswer16(this)">Availability Zones.</li>
-        </ul>
-        <p class="footer">IT 355 AWS Practitioner Created by Ivan Regino</p>
-    </div>
-
-    <div class="flashcard">
-        <p class="question">18.-  AWS System Manager automates processes such as patching and can identify and remediate issues.</p>
-        <ul class="answers">
-            <li class="answer" onclick="checkAnswer(this)">True</li>
-            <li class="answer" onclick="checkAnswer(this)">Flase</li>
-        </ul>
-        <p class="footer">IT 355 AWS Practitioner Created by Ivan Regino</p>
-    </div>
-
-    <div class="flashcard">
-        <p class="question">19. -  It is a firewall AWS service that protects web applications from common exploits.</p>
-        <ul class="answers">
-            <li class="answer" onclick="checkAnswer19(this)">AWS System Manager.</li>
-            <li class="answer" onclick="checkAnswer19(this)">AWS WAF.</li>
-            <li class="answer" onclick="checkAnswer19(this)">AWS Shield.</li>
-            <li class="answer" onclick="checkAnswer19(this)">Amazon Interceptor.</li>
-        </ul>
-        <p class="footer">IT 355 AWS Practitioner Created by Ivan Regino</p>
-    </div>
-
-    <div class="flashcard">
-        <p class="question">20. -  AWS tools used against DDoS attack.</p>
-        <ul class="answers">
-            <li class="answer" onclick="checkAnswer20(this)">AWS Shield.</li>
-            <li class="answer" onclick="checkAnswer20(this)">Amazon Interceptor.</li>
-            <li class="answer" onclick="checkAnswer20(this)">AWS WAF</li>
-            <li class="answer" onclick="checkAnswer20(this)">AWS System Manager.</li>
-        </ul>
-        <p class="footer">IT 355 AWS Practitioner Created by Ivan Regino</p>
-    </div>
-
-    <div class="flashcard">
-        <p class="question">21. -  AWS tool that helps to improve the security and compliance of applications. It generates detailed reports of unintended vulnerabilities reducing the risk of security issues during deployment and development. </p>
-        <ul class="answers">
-            <li class="answer" onclick="checkAnswer21(this)">AWS System Manager </li>
-            <li class="answer" onclick="checkAnswer21(this)">AWS trusted advisor</li>
-            <li class="answer" onclick="checkAnswer21(this)">Amazon Interceptor</li>
-            <li class="answer" onclick="checkAnswer21(this)">AWS Shield  </li>
-        </ul>
-        <p class="footer">IT 355 AWS Practitioner Created by Ivan Regino</p>
-    </div>
-
-    <div class="flashcard">
-        <p class="question">22. -  AWS Service that advice users on how to provision resources and provide actions recommendation to bring infrastructure closer to best practices. </p>
-        <ul class="answers">
-            <li class="answer" onclick="checkAnswer22(this)">AWS trusted advisor</li>
-            <li class="answer" onclick="checkAnswer22(this)">AWS WAF </li>
-            <li class="answer" onclick="checkAnswer22(this)">AWS Shield </li>
-            <li class="answer" onclick="checkAnswer22(this)">Amazon Interceptor. </li>
-        </ul>
-        <p class="footer">IT 355 AWS Practitioner Created by Ivan Regino</p>
-    </div>
-
-    <div class="flashcard">
-        <p class="question">23. -  AWS threat detection services that monitor suspicious activity and unauthorized behaviors. It sends and prioritizes alerts when detecting unusual activity and uses machine learning integrations. </p>
-        <ul class="answers">
-            <li class="answer" onclick="checkAnswer23(this)">AWS WAF</li>
-            <li class="answer" onclick="checkAnswer23(this)">AWS Shield </li>
-            <li class="answer" onclick="checkAnswer23(this)">Amazon Interceptor.</li>
-            <li class="answer" onclick="checkAnswer23(this)">AWS GuardDuty</li>
-        </ul>
-        <p class="footer">IT 355 AWS Practitioner Created by Ivan Regino</p>
-    </div>
-
-    <div class="flashcard">
-        <p class="question">24. -  Which of the following is not an AWS service used for governance and compliance in the AWS infrastructure:</p>
-        <ul class="answers">
-            <li class="answer" onclick="checkAnswer24(this)">AWS WAF</li>
-            <li class="answer" onclick="checkAnswer24(this)">CloudWatch </li>
-            <li class="answer" onclick="checkAnswer24(this)">CloudTrail</li>
-            <li class="answer" onclick="checkAnswer24(this)">Audit Manager</li>
-        </ul>
-        <p class="footer">IT 355 AWS Practitioner Created by Ivan Regino</p>
-    </div>
-
-    <div class="flashcard">
-        <p class="question">25. -  What is the main goal of AWS CloudFront?</p>
-        <ul class="answers">
-            <li class="answer" onclick="checkAnswer25(this)">balance HTTP and HTTPS traffic for moder applications.</li>
-            <li class="answer" onclick="checkAnswer25(this)">Fast and secure delivery of data, videos, applications, and APIs.</li>
-            <li class="answer" onclick="checkAnswer25(this)">Monitor cloud resources. </li>
-            <li class="answer" onclick="checkAnswer25(this)">None of the above. </li>
-        </ul>
-        <p class="footer">IT 355 AWS Practitioner Created by Ivan Regino</p>
-    </div>
-
-    <div class="flashcard">
-        <p class="question">26 .  - This load balancer serves to balance HTTP and HTTPS traffic for moder applications.</p>
-        <ul class="answers">
-            <li class="answer" onclick="checkAnswer26(this)">Gateway load balancer.</li>
-            <li class="answer" onclick="checkAnswer26(this)">Network Load balancer. </li>
-            <li class="answer" onclick="checkAnswer26(this)">Application load balancer.</li>
-            <li class="answer" onclick="checkAnswer26(this)">None of the above. </li>
-        </ul>
-        <p class="footer">IT 355 AWS Practitioner Created by Ivan Regino</p>
-    </div>
-
-    <div class="flashcard">
-        <p class="question">27. -  This load balancer serves for TCP, UDP, and TLS traffic for high speed traffic. </p>
-        <ul class="answers">
-            <li class="answer" onclick="checkAnswer27(this)">Application load balancer. </li>
-            <li class="answer" onclick="checkAnswer27(this)">Network Load balancer.</li>
-            <li class="answer" onclick="checkAnswer27(this)">Gateway load balancer.</li>
-            <li class="answer" onclick="checkAnswer27(this)">AWS website load balancer. </li>
-        </ul>
-        <p class="footer">IT 355 AWS Practitioner Created by Ivan Regino</p>
-    </div>
-
-    <div class="flashcard">
-        <p class="question">28. -  This load balancer serves for deploying, scaling, and managing virtual appliances such as routers or firewalls. </p>
-        <ul class="answers">
-            <li class="answer" onclick="checkAnswer28(this)">Application load balancer. </li>
-            <li class="answer" onclick="checkAnswer28(this)">Network Load balancer.</li>
-            <li class="answer" onclick="checkAnswer28(this)">Gateway load balancer.</li>
-            <li class="answer" onclick="checkAnswer28(this)">AWS website load balancer. </li>
-        </ul>
-        <p class="footer">IT 355 AWS Practitioner Created by Ivan Regino</p>
-    </div>
-
-    <div class="flashcard">
-        <p class="question">29. -  Main programing language used in ASW for APIs applications.</p>
-        <ul class="answers">
-            <li class="answer" onclick="checkAnswer29(this)">Paython /li>
-            <li class="answer" onclick="checkAnswer29(this)">C++ </li>
-            <li class="answer" onclick="checkAnswer29(this)">JSON</li>
-            <li class="answer" onclick="checkAnswer29(this)">HTML</li>
-        </ul>
-        <p class="footer">IT 355 AWS Practitioner Created by Ivan Regino</p>
-    </div>
-     <div class="flashcard">
-        <p class="question">30. - It is a geographically distributed group of servers that provides faster content delivery.</p>
-        <ul class="answers">
-            <li class="answer" onclick="checkAnswer30(this)">CDN</li>
-            <li class="answer" onclick="checkAnswer30(this)">EBS</li>
-            <li class="answer" onclick="checkAnswer30(this)">T2 Micro</li>
-            <li class="answer" onclick="checkAnswer30(this)">None of the above.</li>
-        </ul>
-        <p class="footer">IT 355 AWS Practitioner Created by Ivan Regino</p>
-    </div>
-    
-
-    
-
+      daysContainer.appendChild(dayEl);
+    }
+  </script>
 </body>
 </html>
